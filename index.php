@@ -268,36 +268,26 @@ include "koneksi.php";
             <div class="container">
                 <h3 class="mb-3 text-center">Gallery</h3>
                 <div class="row g-3">
-                    <div class="col-4 col-md-2">
-                        <img src="Marc_Marquez.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="AC_Shadow.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="R35_Nismo.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="Moon_Knight.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="Nino.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="Ghost.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="Panigale.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="Lewis_Hamilton.jpg" class="img-fluid rounded">
-                    </div>
-                    <div class="col-4 col-md-2">
-                        <img src="Alya_Kujou.jpg" class="img-fluid rounded">
-                    </div>
+                    <?php
+                    $folder = "gallery/"; 
+
+                    $files = glob($folder . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+
+                    if(count($files) > 0){
+                        foreach($files as $image){
+                            ?>
+                            <div class="col-4 col-md-2">
+                                <img src="<?php echo $image; ?>" class="img-fluid rounded" alt="Gallery Image">
+                            </div>
+                            <?php
+                        }
+                    } else {
+                        echo '<div class="col-12 text-center text-muted">Belum ada gambar di galeri.</div>';
+                    }
+                    ?>
                 </div>
             </div>
-        </section>
+        </section>        
         <!-- gallery end -->
 
         <!-- contact begin -->
